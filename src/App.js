@@ -73,15 +73,15 @@ class BooksApp extends React.Component {
 							<div>
 								<div className="bookshelf">
 									<h2 className="bookshelf-title">Currently Reading</h2>
-									<ListBooks books={this.state.books.filter(x => x.shelf === 'currentlyReading')} onChangeCategory={this.changeCateogry} />
+									<ListBooks books={this.state.books.filter(x => x.shelf === 'currentlyReading')} onChangeCategory={this.changeShelf} />
 								</div>
 								<div className="bookshelf">
 									<h2 className="bookshelf-title">Want to Read</h2>
-									<ListBooks books={this.state.books.filter(x => x.shelf === 'wantToRead')} onChangeCategory={this.changeCateogry} />
+									<ListBooks books={this.state.books.filter(x => x.shelf === 'wantToRead')} onChangeCategory={this.changeShelf} />
 								</div>
 								<div className="bookshelf">
 									<h2 className="bookshelf-title">Read</h2>
-									<ListBooks books={this.state.books.filter(x => x.shelf === 'read')} onChangeCategory={this.changeCateogry} />
+									<ListBooks books={this.state.books.filter(x => x.shelf === 'read')} onChangeCategory={this.changeShelf} />
 								</div>
 							</div>
 						</div>
@@ -104,7 +104,7 @@ class BooksApp extends React.Component {
 							 </div>
 						  </div>
 						  <div className="search-books-results">
-						    <ListBooks books={this.state.searchResults} onChangeCategory={this.changeCateogry}/>
+						    <ListBooks books={this.state.searchResults} onChangeCategory={this.changeShelf}/>
 						  </div>
 						</div>
 						)}
