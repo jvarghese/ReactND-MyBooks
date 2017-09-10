@@ -11,7 +11,6 @@ class Book extends React.Component{
         const{book, onChangeShelf} = this.props
         if(!book.imageLinks){
             book.imageLinks = {'thumbnail': ''}
-
         }
         return(
             <li key={book.id}>

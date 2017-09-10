@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Book from './Book.js'
 import * as BooksAPI from './BooksAPI';
-///import BookShelf from './BookShelf.js';
+import BookShelf from './BookShelf.js';
 import { Link } from 'react-router-dom';
 
 class Library extends React.Component{
@@ -18,7 +18,7 @@ class Library extends React.Component{
 	updateQuery = (query) => {
     	if(query.trim() !== ''){
     		BooksAPI.search(query.trim(),5).then((result) => {
-    		alert(JSON.stringify(result))
+
             if(!result.error){
                 result.forEach((book,index) => {
                     let existingBook = this.props.myBooks.find((b) => b.id === book.id); //Update the shelf if book is already present on a shelf
@@ -55,12 +55,21 @@ class Library extends React.Component{
 				</div>
 				<div className="search-books-results">
 					<div className="bookshelf-books">
-						<ol className="books-grid">
+
+						{/* I could use the bookshelf component here, but it would display a title of 'Search Results'.
+						* The second option is to loop through books and use book component for displaying it, which is the code implemented.
+					  	* The search can be considered as searching against a common bookshelf(library) from where the books are added to personal bookshelves.
+					  	*
+					 	<BookShelf title="Search Results"
+                     		books={this.state.searchResults}
+                    		onChangeShelf={this.props.addToShelf} />
+                    	*/}
+                    	<ol className="books-grid">
 						{
-                    		this.state.searchResults.map((book) => (
-                        		<Book key={book.id} book={book} onChangeShelf={this.props.onChangeShelf}/>
-                    		))
-                		}
+      						this.state.searchResults.map((book) => (
+      							<Book key={book.id} book={book} onChangeShelf={this.props.addToShelf}/>
+     						))
+      					}
 						</ol>
 					</div>
 				</div>
